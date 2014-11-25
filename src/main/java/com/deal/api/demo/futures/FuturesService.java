@@ -117,7 +117,7 @@ public class FuturesService extends Base{
     }
     
     /**
-     * 市价卖出
+     * 下委托单
      * @param coinType
      * @param amount
      * @param tradePassword
