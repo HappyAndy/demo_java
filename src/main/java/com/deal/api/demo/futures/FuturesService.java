@@ -18,33 +18,6 @@ import com.deal.api.demo.huobi.Base;
  */
 public class FuturesService extends Base{
     /**
-     * 下单接口
-     * @param coinType
-     * @param price
-     * @param amount
-     * @param tradePassword
-     * @param tradeid
-     * @param url 
-     * @return
-     * @throws Exception
-     */
-    public String buy(int coinType, String price, String amount, String tradePassword,String url) throws Exception {
-        TreeMap<String, Object> paraMap = new TreeMap<String, Object>();
-        paraMap.put("accessKey", BITVC_ACCESS_KEY);
-        paraMap.put("secretKey", BITVC_SECRET_KEY);
-        paraMap.put("amount", amount);
-        paraMap.put("coinType", coinType);
-        paraMap.put("created", getTimestamp());
-        paraMap.put("price", price);
-        String md5 = sign(paraMap);
-        paraMap.put("sign", md5);
-        paraMap.remove("secretKey");
-        if(StringUtils.isNotEmpty(tradePassword)) {
-            paraMap.put("trade_password", tradePassword);
-        }
-        return post(paraMap,url);
-    }
-    /**
      * 获取所有正在进行的委托
      * @param coinType
      * @param amount
@@ -142,32 +115,7 @@ public class FuturesService extends Base{
         paraMap.put("contractType", contractType);
         return post(paraMap,url);
     }
-    /**
-     * 限价卖出
-     * @param coinType
-     * @param price
-     * @param amount
-     * @param tradePassword
-     * @param tradeid
-     * @return
-     * @throws Exception
-     */
-    public String sell(int coinType, String price, String amount, String tradePassword, String url) throws Exception {
-        TreeMap<String, Object> paraMap = new TreeMap<String, Object>();
-        paraMap.put("accessKey", BITVC_ACCESS_KEY);
-        paraMap.put("secretKey", BITVC_SECRET_KEY);
-        paraMap.put("amount", amount);
-        paraMap.put("coinType", coinType);
-        paraMap.put("created", getTimestamp());
-        paraMap.put("price", price);
-        String md5 = sign(paraMap);
-        paraMap.remove("secretKey");
-        paraMap.put("sign", md5);
-        if(StringUtils.isNotEmpty(tradePassword)) {
-            paraMap.put("trade_password", tradePassword);
-        }
-        return post(paraMap,url);
-    }
+    
     /**
      * 市价卖出
      * @param coinType
