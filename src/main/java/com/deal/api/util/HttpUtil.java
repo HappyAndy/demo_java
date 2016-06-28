@@ -66,7 +66,7 @@ public class HttpUtil {
         connectionManager.setMaxTotal(MAX_TOTAL_CONNECTIONS);
         // 设置每个路由最大连接数
         connectionManager.setDefaultMaxPerRoute(MAX_ROUTE_CONNECTIONS);
-        client = new DefaultHttpClient(connectionManager, httpParams);
+        client = HttpClients.createDefault();
     }
 
     /**
